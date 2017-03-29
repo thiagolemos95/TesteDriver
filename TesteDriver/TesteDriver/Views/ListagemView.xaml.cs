@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace TesteDriver
+namespace TesteDriver.Views
 {
     /// <summary>
     /// Criando um TB de veiculo com seus atributos
@@ -14,15 +14,20 @@ namespace TesteDriver
     {
         public string Nome { get; set; }
         public decimal Preco { get; set; }
+        public string PrecoFormatado
+        {
+            get { return string.Format("R$ {0}", Preco); }
+        }
     }
-    public partial class MainPage : ContentPage
+
+    public partial class ListagemView : ContentPage
     {
         /// <summary>
         /// Criando uma lista de veiculos para mostrar no grid
         /// </summary>
         public List<Veiculo> Veiculos { get; set; }
 
-        public MainPage()
+        public ListagemView()
         {
             InitializeComponent();
             
@@ -35,6 +40,16 @@ namespace TesteDriver
             };
 
             this.BindingContext = this;
+        }
+
+        private void listViewVeiculos_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var veiculo = (Veiculo)e.Item;
+
+            //DisplayAlert("TesteDriver", string.Format("Você tocou no modelo {0} que custa {1}", veiculo.Nome, veiculo.PrecoFormatado),"OK");
+
+            Navigation.PushAsync(new DetalheView(veiculo));
+
         }
     }
 }

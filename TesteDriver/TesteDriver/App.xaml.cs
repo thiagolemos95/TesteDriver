@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using TesteDriver.Views;
 using Xamarin.Forms;
 
 namespace TesteDriver
@@ -13,7 +13,7 @@ namespace TesteDriver
 		{
 			InitializeComponent();
 
-			MainPage = new TesteDriver.MainPage();
+			MainPage = new NavigationPage(new ListagemView());
 		}
 
 		protected override void OnStart ()
