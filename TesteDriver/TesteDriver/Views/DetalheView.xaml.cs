@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using TesteDriver.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,44 +17,40 @@ namespace TesteDriver.Views
         /// </summary>
         /// 
         #region Variaveis e constantes 
-        public Veiculo veiculo { get; set; }
-
-        private const int freio_abs = 800;
-        private const int ar_condicionado = 1000;
-        private const int mp3_player = 500;
+        public Veiculo veiculo { get; set; }              
 
         public string TextoFreioABS
         {
             get
             {
-                return string.Format("Freio ABS - R$ {0}", freio_abs);
+                return string.Format("Freio ABS - R$ {0}", Veiculo.freio_abs);
             }
         }
         public string TextoArCondicionado
         {
             get
             {
-                return string.Format("Ar Condicionado - R$ {0}", ar_condicionado);
+                return string.Format("Ar Condicionado - R$ {0}", Veiculo.ar_condicionado);
             }
         }
         public string TextoMp3Player
         {
             get
             {
-                return string.Format("Mp3 Player - R$ {0}", mp3_player);
+                return string.Format("Mp3 Player - R$ {0}", Veiculo.mp3_player);
             }
         }
 
-        bool temFreioABS;
+        //bool temFreioABS;
         public bool TemFreioABS
         {
             get
             {
-                return temFreioABS;
+                return veiculo.TemFreioABS;
             }
             set
             {
-                temFreioABS = value;
+                veiculo.TemFreioABS = value;
 
                 //if (temFreioABS)
                 //    DisplayAlert("Freio ABS", "Ligado!", "OK");
@@ -66,16 +62,16 @@ namespace TesteDriver.Views
             }
         }
 
-        bool temArCondicionado;
+        //bool temArCondicionado;
         public bool TemArCondicionado
         {
             get
             {
-                return temArCondicionado;
+                return veiculo.TemArCondicionado;
             }
             set
             {
-                temArCondicionado = value;
+                veiculo.TemArCondicionado = value;
 
                 //if (temFreioABS)
                 //    DisplayAlert("Freio ABS", "Ligado!", "OK");
@@ -87,16 +83,16 @@ namespace TesteDriver.Views
             }
         }
 
-        bool temMp3Player;
+        //bool temMp3Player;
         public bool TemMp3Player
         {
             get
             {
-                return temMp3Player;
+                return veiculo.TemMp3Player;
             }
             set
             {
-                temMp3Player = value;
+                veiculo.TemMp3Player = value;
 
                 //if (temFreioABS)
                 //    DisplayAlert("Freio ABS", "Ligado!", "OK");
@@ -112,12 +108,7 @@ namespace TesteDriver.Views
         {
             get
             {
-                return string.Format("Valor Total: R$ {0}",
-                                    veiculo.Preco
-                                    + (TemFreioABS ? freio_abs : 0)
-                                    + (TemArCondicionado ? ar_condicionado : 0)
-                                    + (TemMp3Player ? mp3_player : 0)
-                                    );
+                return veiculo.PrecoTotalFormatado;
             }
         }
 
