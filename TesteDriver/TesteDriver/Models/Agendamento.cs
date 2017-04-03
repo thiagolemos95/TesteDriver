@@ -12,7 +12,7 @@ namespace TesteDriver.Models
         public string Fone { get; set; }
         public string Email { get; set; }
 
-        public DateTime dataAgendamento = DateTime.Today;
+        public DateTime DataAgendamento = DateTime.Today;
 
         public TimeSpan HoraAgendamento { get; set; }
     }
