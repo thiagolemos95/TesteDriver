@@ -20,11 +20,27 @@ namespace TesteDriver.Views
             InitializeComponent();
             this.veiculo = _veiculo;
             this.BindingContext = new DetalheViewModel(_veiculo);
+
         }
 
         private void buttonProximo_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new AgendamentoView(this.veiculo));
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            MessagingCenter.Subscribe<Veiculo>(this, "Proximo", (msg) =>
+                 {
+                     Navigation.PushAsync(new AgendamentoView(msg));
+                 });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<Veiculo>(this, "Proximo");
         }
     }
 }

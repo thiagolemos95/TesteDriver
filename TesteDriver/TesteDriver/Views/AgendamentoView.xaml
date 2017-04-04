@@ -35,6 +35,6 @@
 
         </TableView>
         
-        <Button  Text="Agendar" Clicked="Button_Clicked"></Button>
+        <Button  Text="Agendar" Command="{Binding AgendamentoComando}"></Button>
     </StackLayout>
 </ContentPage>

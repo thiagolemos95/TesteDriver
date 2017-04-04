@@ -41,7 +41,7 @@
     </Grid>-->
 
     <ListView x:Name="listViewVeiculos" ItemsSource="{Binding Veiculos}" Margin="25"
-              ItemTapped="listViewVeiculos_ItemTapped">
+               SelectedItem="{Binding VeiculoSelecionado}">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Windows.Input;
 using TesteDriver.Models;
+using Xamarin.Forms;
 
 namespace TesteDriver.ViewsModels
 {
@@ -86,7 +88,7 @@ namespace TesteDriver.ViewsModels
             }
         }
 
-        
+
 
         #endregion
 
@@ -100,7 +102,14 @@ namespace TesteDriver.ViewsModels
         public DetalheViewModel(Veiculo _veiculo)
         {
             this.veiculo = _veiculo;
+            ProximoComando = new Command(() =>
+            {
+                MessagingCenter.Send(veiculo, "Proximo");
+
+            });
         }
+
+        public ICommand ProximoComando { get; set; }
 
     }
 }

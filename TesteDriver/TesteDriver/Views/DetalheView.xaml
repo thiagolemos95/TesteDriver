@@ -22,7 +22,7 @@
         </TableView>
 
         <Button x:Name="buttonProximo" Text="Próximo" 
-            Clicked="buttonProximo_Clicked"
+            Command="{Binding ProximoComando}"
             VerticalOptions="End"></Button>
     </StackLayout>
 
